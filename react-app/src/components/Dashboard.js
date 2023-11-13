@@ -14,7 +14,7 @@ function Dashboard() {
 		<div>
 			<section className="dashboard-section">
 				{/* Dashboard content goes here */}
-				<h2>Dashboard</h2>
+				<h2>Dashboard123</h2>
 				{/* ... */}
 			</section>
 		</div>
