@@ -1,4 +1,3 @@
-// Inventory.js
 import React, {useEffect} from 'react';
 
 function Inventory() {

@@ -1,5 +1,3 @@
-// Dashboard.js
-
 import React, { useEffect } from 'react';
 
 function Accounts() {
