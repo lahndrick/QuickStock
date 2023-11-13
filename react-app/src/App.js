@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
+import DashboardComponent from './components/Dashboard';
 
 // Define functional components for each section
 const Dashboard = () => (
@@ -38,7 +39,7 @@ function App() {
 						<ul>
 							{/* Wrap the entire li with Link */}
 							<li>
-								<Link to="/">
+								<Link to="/dashboard">
 									Dashboard
 								</Link>
 							</li>
@@ -57,7 +58,7 @@ function App() {
 
 					<main className="app-main">
 						<Routes>
-							<Route path="/" element={<Dashboard />} />
+							<Route path="/dashboard" element={<DashboardComponent />} />
 							<Route path="/inventory" element={<InventoryComponent />} />
 							<Route path="/accounts" element={<AccountsComponent />} />
 						</Routes>
@@ -66,7 +67,7 @@ function App() {
 			</Router>
 
 			<footer className="app-footer">
-				<p>&copy; 2023 Stock Management System</p>
+				<p>&copy; 2023 QuickStock</p>
 			</footer>
 		</div>
 	);
