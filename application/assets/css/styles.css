@@ -1,0 +1,59 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Arial', sans-serif;
+	background-color: #ffffff; /* Pale blue */
+	color: #333;
+}
+
+nav {
+	background-color: #4A8BDF; /* Royal blue */
+	color: #FFF;
+	padding: 10px;
+	text-align: center;
+}
+
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	padding: 20px;
+}
+
+#sidebar {
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	top: 0; /* Ensure the sidebar starts from the top */
+	left: 0;
+	background-color: #333; /* Set your desired background color */
+	padding-top: 20px;
+}
+
+#sidebar ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#sidebar ul li {
+	padding: 8px;
+	text-align: center;
+}
+
+#sidebar ul li a {
+	color: white; /* Set your desired text color */
+	text-decoration: none;
+	display: block;
+}
+
+#main-content {
+	margin-left: 250px; /* Adjust the margin to match the width of the sidebar */
+	padding: 20px;
+	transition: margin 0.5s;
+}
+
+.dashboard {
+	width: calc(80% - 250px); /* Adjust the width to account for the sidebar */
+	min-width: 300px;
+}
