@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+/* App.css */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Arial', sans-serif;
+	background-color: #f5f5f5;
+	color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-container {
+	display: flex;
+	flex: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app-sidebar {
+	width: 250px;
+	background-color: #2c3e50;
+	color: #ecf0f1;
+	padding: 20px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-header {
+	text-align: center;
+	margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-sidebar ul {
+	list-style-type: none;
+	padding: 0;
+	width: 100%;
+}
+
+.app-sidebar ul li {
+	padding: 15px;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+.app-sidebar ul li a {
+	text-decoration: none;
+	color: #ecf0f1; /* Set the desired text color */
+	display: block;
+	padding: 15px;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.app-sidebar ul li a:hover {
+	background-color: #34495e;
+}
+
+.app-sidebar ul li:hover {
+	background-color: #34495e;
+}
+.app-sidebar ul li:hover a {
+	color: #ecf0f1; /* Change text color on hover */
+}
+
+.app-main {
+	flex: 1;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.dashboard-section,
+.inventory-section {
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+}
+
+h2 {
+	color: #2c3e50;
+}
+
+.widgets-container,
+.charts-container,
+.search-container,
+.table-container {
+	/* Add more styling based on your needs */
+}
+
+.widget {
+	background-color: #3498db;
+	color: #fff;
+	padding: 15px;
+	margin-bottom: 15px;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.widget h3 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.widget p {
+	font-size: 16px;
+}
+
+.table-container table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.table-container th,
+.table-container td {
+	padding: 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.table-container th {
+	background-color: #3498db;
+	color: #fff;
+}
+
+.app-footer {
+	text-align: center;
+	padding: 10px;
+	background-color: #34495e;
+	color: #ecf0f1;
 }
