@@ -34,7 +34,7 @@ function App() {
 				<div className="app-container">
 					<nav className="app-sidebar">
 						<div className="sidebar-header">
-							<h1>Stock Management</h1>
+							<h1>QuickStock</h1>
 						</div>
 						<ul>
 							{/* Wrap the entire li with Link */}

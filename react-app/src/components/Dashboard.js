@@ -17,7 +17,6 @@ function Dashboard() {
 			<section className="dashboard-section">
 				{/* Dashboard content goes here */}
 				<h2>Dashboard</h2>
-				<p></p>
 				{/* ... */}
 			</section>
 		</div>
