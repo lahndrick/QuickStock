@@ -9,7 +9,7 @@ function Accounts() {
 
 		// Optionally, you can reset the title when the component unmounts
 		return () => {
-			document.title = 'Original Title'; // Replace with your original title
+			document.title = 'QuickSort'; // Replace with your original title
 		};
 	}, []);
 	return (
