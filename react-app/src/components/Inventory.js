@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 function Inventory() {
-	const [dashboardData, setDashboardData] = useState([]);
-
 	const [invData, setInvData] = useState([]);
 
 	useEffect(() => {
@@ -17,26 +15,10 @@ function Inventory() {
 		};
 
 		fetchData();
-		document.title = 'Inventory';
 
 		return () => {
 			document.title = 'QuickSort';
 		};
-	}, []);
-
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get("http://hawk.qsnz.net/index.php/main/getDashboardData");
-				console.log('Response Data:', response.data);
-				setDashboardData(response.data);
-			} catch (error) {
-				console.error('Error fetching data:', error.message);
-			}
-		};
-
-		fetchData();
 	}, []);
 
 	return (
