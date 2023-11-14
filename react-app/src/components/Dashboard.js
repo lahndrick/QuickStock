@@ -24,12 +24,9 @@ function Dashboard() {
 		<div>
 			<section className="dashboard-section">
 				<h2>Dashboard</h2>
-				{/* Display your fetched data here */}
-				<ul>
-					{dashboardData.map(item => (
-						<li key={item.id}>{item.name}</li>
-					))}
-				</ul>
+				<p>
+					This is where the dashboard will go.
+				</p>
 			</section>
 		</div>
 	);
