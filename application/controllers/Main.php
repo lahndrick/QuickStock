@@ -7,7 +7,7 @@ class Main extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Main_model');
-		$allowed_origin = 'http://3.26.71.160:3000';
+		$allowed_origin = '*';
 		$this->output->set_header("Access-Control-Allow-Origin: $allowed_origin");
 
 	}
@@ -26,5 +26,10 @@ class Main extends CI_Controller {
 
 		// Return the data as JSON
 		echo json_encode($data);
+	}
+
+	// i have no idea what im doing - lahn
+	public function iAmTesting() {
+		
 	}
 }
