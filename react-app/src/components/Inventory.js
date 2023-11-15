@@ -7,12 +7,18 @@ function Inventory() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get("http://3.26.71.160/index.php/main/getDashboardData");
-				setInvData(response.data);
+				const response = await axios.get("http://3.26.71.160/index.php/main/getDashboardData", {
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+					},
+				});
+				console.log('Response Data:', response.data);
 			} catch (error) {
 				console.error('Error fetching data:', error.message);
 			}
 		};
+
 
 		fetchData();
 

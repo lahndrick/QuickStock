@@ -5,6 +5,7 @@ import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
 import DashboardComponent from './components/Dashboard';
+import LoginComponent from  './components/Login';
 
 // Define functional components for each section
 const Dashboard = () => (
@@ -26,6 +27,11 @@ const Accounts = () => (
 		{/* Inventory content goes here */}
 	</section>
 );
+const Login = () => (
+	<section className="login-section">
+		<h2>Login</h2>
+	</section>
+)
 
 function App() {
 	return (
@@ -53,6 +59,11 @@ function App() {
 									Accounts
 								</Link>
 							</li>
+							<li>
+								<Link to="/login">
+									Login
+								</Link>
+							</li>
 						</ul>
 					</nav>
 
@@ -61,6 +72,7 @@ function App() {
 							<Route path="/dashboard" element={<DashboardComponent />} />
 							<Route path="/inventory" element={<InventoryComponent />} />
 							<Route path="/accounts" element={<AccountsComponent />} />
+							<Route path="/login" element={<LoginComponent />} />
 						</Routes>
 					</main>
 				</div>
