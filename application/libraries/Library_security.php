@@ -1,6 +1,6 @@
 <?php
 
-class Security
+class Library_security
 {
 	public function __construct()
 	{

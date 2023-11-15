@@ -23,7 +23,7 @@ function Login() {
         }
 
         // This will not work currently; it needs to be able to check the database
-        const res = axios.post("http://3.26.71.160/index.php/main/authLogin", {
+        const res = axios.post("http://3.26.71.160/index.php/auth/authLogin", {
             username: username,
             password: password
         })
