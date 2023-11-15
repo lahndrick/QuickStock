@@ -14,26 +14,31 @@ function Login() {
         }
     };
 
-    const handleLogin = (e) => {
-        e.preventDefault();
+	const handleLogin = (e) => {
+		e.preventDefault();
 
-        if (!username || !password) {
-            console.log("Please enter both username and password.");
-            return;
-        }
+		if (!username || !password) {
+			console.log("Please enter both username and password.");
+			return;
+		}
 
-        // This will not work currently; it needs to be able to check the database
-        const res = axios.post("http://3.26.71.160/index.php/auth/authLogin", {
-            username: username,
-            password: password
-        })
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    };
+		// Modify this part to send data as x-www-form-urlencoded
+		const params = new URLSearchParams();
+		params.append('username', username);
+		params.append('password', password);
+
+		axios.post("http://3.26.71.160/index.php/auth/authLogin", params, {
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+		})
+			.then(res => {
+				console.log(res.data);
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	};
 
     return (
         <div>

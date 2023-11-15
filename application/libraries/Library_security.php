@@ -2,21 +2,24 @@
 
 class Library_security
 {
-	public function __construct()
-	{
+	private $CI;
 
+	public function __construct() {
+		$this->CI =& get_instance();
+		$this->CI->load->database();
+		$this->CI->load->library('session');
+		$this->CI->load->helper('url');
+		$this->CI->load->model('auth_model'); // Corrected line
 	}
 
-	public function authLogin($username,$password)
+	public function authLogin($username, $password)
 	{
-		$this->load->modal('auth_model');
-		$login = $this->auth_model->authLogin($username, $password);
+		$login = $this->CI->auth_model->authLogin($username, $password); // Corrected line
 
-		if(!empty($login)){
+		if (!empty($login)) {
 			return true;
 		} else {
 			return false;
 		}
-
 	}
 }

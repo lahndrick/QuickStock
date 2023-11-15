@@ -1,4 +1,10 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Headers: *');
+	header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+	exit;
+}
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller {
