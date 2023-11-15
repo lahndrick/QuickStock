@@ -1,10 +1,9 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [DbUsername, getDbUsername] = useState("");
-    const [DbPassword, getDbPassword] = useState("");
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -24,11 +23,16 @@ function Login() {
         }
 
         // This will not work currently; it needs to be able to check the database
-        if (username === DbUsername && password === DbPassword) {
-            console.log("Login works");
-        } else {
-            console.log("Login does not work");
-        }
+        const res = axios.post("http://3.26.71.160/index.php/main/authLogin", {
+            username: username,
+            password: password
+        })
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(error => {
+            console.error(error);
+        });
     };
 
     return (

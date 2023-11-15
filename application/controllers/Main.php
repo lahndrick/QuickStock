@@ -28,8 +28,16 @@ class Main extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	// i have no idea what im doing - lahn
-	public function iAmTesting() {
-		
+	// test username + password combo
+	public function authLogin() {
+		$postedUsername = $this->input->post('username');
+		$postedPassword = $this->input->post('password');
+	
+		// REPLACE THIS WITH DATABASE INFO
+		$correctUsername = 'lahn';
+		$correctPassword = 'test';
+
+		$loginAttempt = ($postedUsername === $correctUsername && $postedPassword === $correctPassword);	
+		echo json_encode(['success' => $loginAttempt]);
 	}
 }
