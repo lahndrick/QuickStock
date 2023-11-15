@@ -28,7 +28,7 @@ function Login() {
             password: password
         })
         .then(res => {
-            console.log(res.data)
+            console.log(res.data);
         })
         .catch(error => {
             console.error(error);
