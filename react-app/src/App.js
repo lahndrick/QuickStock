@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { useNavigate } from 'react-router';
-// Update import
+import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom'; // Update import
 import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
@@ -55,36 +53,32 @@ const authenticate = async (userToken) => {
 };
 
 function App() {
+
 	const userToken = getCookie('userToken');
+	console.log(userToken);
 	// Use state to store the authentication status
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const navigate = useNavigate();
 
 	// Use useEffect to authenticate when the component mounts
 	useEffect(() => {
 		const authenticateUser = async () => {
 			const isAuthenticated = await authenticate(userToken);
 			setIsAuthenticated(isAuthenticated);
-
-			if (!isAuthenticated) {
-				// Redirect to the login page if not authenticated
-				navigate('/login');
-			}
 		};
 
 		authenticateUser();
-	}, [userToken, navigate]);
+	}, [userToken]);
 
 	// Use this function to handle logout
 	const handleLogout = () => {
 		// Clear the token from cookies
-		document.cookie = 'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+		document.cookie = 'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
 		// Update the authentication status
 		setIsAuthenticated(false);
 
 		// Redirect to the login page
-		navigate('/login');
+
 	};
 
 	return (

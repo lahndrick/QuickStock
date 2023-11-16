@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { useNavigate } from 'react-router';
 
 function setCookie(name, value, days) {
 	const expires = new Date();
@@ -11,7 +10,6 @@ function setCookie(name, value, days) {
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const navigate = useNavigate();
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		if (name === "username") {
@@ -45,8 +43,8 @@ function Login() {
 					// Save the token in cookies
 					setCookie('userToken', data, 1);
 					console.log("Token saved in cookies:", data);
+					window.location.reload()
 
-					navigate('/');
 				} else {
 					console.log("Login failed:", data);
 				}
