@@ -26,4 +26,28 @@ class Auth_model extends CI_Model
 		}
 	}
 
+	public function getToken($token){
+		$query = $this->db->query("SELECT token FROM accounts WHERE token = ?", array($token));
+		return $query->row();
+	}
+
+	public function storeToken($userId, $token)
+	{
+		// Check if the user already has a token in the database
+		$existingToken = $this->db
+			->query("SELECT token FROM accounts WHERE username = ?", array($userId))
+			->row();
+
+		// If the user already has a token, update it; otherwise, insert a new record
+		if ($existingToken) {
+			// Update the existing token
+			$this->db
+				->query("UPDATE accounts SET token = ? WHERE username = ?", array($token, $userId));
+		} else {
+			// Insert a new record with the provided token
+			$this->db
+				->query("INSERT INTO accounts (username, token) VALUES (?, ?)", array($userId, $token));
+		}
+	}
+
 }
