@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import '../Login.css';
 function setCookie(name, value, days) {
@@ -12,7 +12,7 @@ function Login() {
 	const [password, setPassword] = useState("");
 
 	const handleInputChange = (e) => {
-		const {name, value} = e.target;
+		const { name, value } = e.target;
 		if (name === "username") {
 			setUsername(value);
 		} else if (name === "password") {
@@ -38,7 +38,7 @@ function Login() {
 			},
 		})
 			.then(res => {
-				const {status, data} = res.data;
+				const { status, data } = res.data;
 
 				if (status === 'success') {
 					// Save the token in cookies
@@ -47,6 +47,7 @@ function Login() {
 					window.location.reload();
 				} else {
 					console.log("Login failed:", data);
+					alert("Username or password incorrect");
 				}
 			})
 			.catch(error => {
@@ -70,7 +71,7 @@ function Login() {
 							className="login-input"
 						/>
 					</label>
-					<br/>
+					<br />
 					<label>
 						Password:
 						<input
@@ -84,7 +85,7 @@ function Login() {
 							className="login-input"
 						/>
 					</label>
-					<br/>
+					<br />
 					<button
 						type="submit"
 						className="login-button"
