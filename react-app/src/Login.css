@@ -1,0 +1,31 @@
+/* Inside Login.css */
+.custom-login-section {
+	/* Add your specific styles for the login section */
+	width: 80%;
+	max-width: 400px;
+	margin: 15% auto; /* Adjust the percentage to center vertically */
+	padding: 20px; /* Add padding for better appearance */
+	box-sizing: border-box;
+	/* Add more styles as needed */
+}
+
+.login-input {
+	/* Add your specific styles for login input */
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+.login-button {
+	/* Add your specific styles for login button */
+	width: 100%;
+	background-color: #34495e;
+	color: #fff;
+	padding: 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	transition: background-color 0.3s;
+}

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom'; // Update import
+import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom';
 import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
@@ -53,17 +53,22 @@ const authenticate = async (userToken) => {
 };
 
 function App() {
-
 	const userToken = getCookie('userToken');
 	console.log(userToken);
+
 	// Use state to store the authentication status
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [authenticationChecked, setAuthenticationChecked] = useState(false);
 
 	// Use useEffect to authenticate when the component mounts
 	useEffect(() => {
 		const authenticateUser = async () => {
-			const isAuthenticated = await authenticate(userToken);
-			setIsAuthenticated(isAuthenticated);
+			// Check if userToken is defined before making the authentication request
+			if (userToken) {
+				const isAuthenticated = await authenticate(userToken);
+				setIsAuthenticated(isAuthenticated);
+			}
+			setAuthenticationChecked(true);
 		};
 
 		authenticateUser();
@@ -71,76 +76,85 @@ function App() {
 
 	// Use this function to handle logout
 	const handleLogout = () => {
-		// Clear the token from cookies
-		document.cookie = 'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-
+		document.cookie = 'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
 		// Update the authentication status
 		setIsAuthenticated(false);
-
-		// Redirect to the login page
-
 	};
+
+	// Show a loading indicator or a different component while authentication is being checked
+	if (!authenticationChecked) {
+		return <div>Loading...</div>;
+	}
+
+	// Temporarily render LoginComponent outside of Routes for testing
+	if (!isAuthenticated) {
+		return (
+			<div className="login-page">
+
+				<LoginComponent/>
+
+
+			</div>
+		);
+	}
 
 	return (
 		<Router>
 			<div className="app">
-
 				<div className="app-container">
-					{isAuthenticated ? (
-						<>
-							<nav className="app-sidebar">
-								<div className="sidebar-header">
-									<h1>QuickStock</h1>
-								</div>
-								<ul>
-									<li>
-										<Link to="/dashboard">Dashboard</Link>
-									</li>
-									<li>
-										<Link to="/inventory">Inventory</Link>
-									</li>
-									<li>
-										<Link to="/accounts">Accounts</Link>
-									</li>
-									<li style={{ marginBottom: "5px" }}>
-										<button
-											onClick={handleLogout}
-											style={{
-												backgroundColor: "#2c3e50",
-												fontSize: "16px",
-												color: "#ecf0f1",
-												padding: "15px",
-												width: "100%",
-												border: "none",
-												borderRadius: "5px", // Ensure border radius is set
-												cursor: "pointer",
-												transition: "background-color 0.3s",
-												outline: "none", // Remove default outline
-											}}
-										>
-											Logout
-										</button>
-									</li>
-								</ul>
-							</nav>
+					{!userToken ? null : (
+						<nav className="app-sidebar">
+							<div className="sidebar-header">
+								<h1>QuickStock</h1>
+							</div>
+							<ul>
+								<li>
+									<Link to="/dashboard">Dashboard</Link>
+								</li>
+								<li>
+									<Link to="/inventory">Inventory</Link>
+								</li>
+								<li>
+									<Link to="/accounts">Accounts</Link>
+								</li>
+								<li style={{marginBottom: "5px"}}>
+									<button
+										onClick={handleLogout}
+										style={{
+											backgroundColor: "#2c3e50",
+											fontSize: "16px",
+											color: "#ecf0f1",
+											padding: "15px",
+											paddingTop: "0px",
+											width: "100%",
+											border: "none",
+											borderRadius: "5px",
+											cursor: "pointer",
+											transition: "background-color 0.3s",
+											outline: "none",
+										}}
+									>
+										Logout
+									</button>
+								</li>
+							</ul>
+						</nav>
+					)}
 
-							<main className="app-main">
-								<Routes>
+					<main className="app-main">
+						<Routes>
+							{!isAuthenticated ? (
+								<Route path="/login" element={<LoginComponent/>}/>
+							) : (
+								<>
 									<Route path="/dashboard" element={<DashboardComponent/>}/>
 									<Route path="/inventory" element={<InventoryComponent/>}/>
 									<Route path="/accounts" element={<AccountsComponent/>}/>
-								</Routes>
-							</main>
-						</>
-					) : (
-						<main className="app-main">
-							<Routes>
-								<Route path="/login" element={<LoginComponent/>}/>
-							</Routes>
-						</main>
-					)}
+								</>
+							)}
+						</Routes>
+					</main>
 				</div>
-
 
 				<footer className="app-footer">
 					<p>&copy; 2023 QuickStock</p>

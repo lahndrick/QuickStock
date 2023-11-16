@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from 'axios';
-
+import '../Login.css';
 function setCookie(name, value, days) {
 	const expires = new Date();
 	expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
@@ -10,8 +10,9 @@ function setCookie(name, value, days) {
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+
 	const handleInputChange = (e) => {
-		const { name, value } = e.target;
+		const {name, value} = e.target;
 		if (name === "username") {
 			setUsername(value);
 		} else if (name === "password") {
@@ -37,14 +38,13 @@ function Login() {
 			},
 		})
 			.then(res => {
-				const { status, data } = res.data;
+				const {status, data} = res.data;
 
 				if (status === 'success') {
 					// Save the token in cookies
 					setCookie('userToken', data, 1);
 					console.log("Token saved in cookies:", data);
-					window.location.reload()
-
+					window.location.reload();
 				} else {
 					console.log("Login failed:", data);
 				}
@@ -55,9 +55,9 @@ function Login() {
 	};
 
 	return (
-		<div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "50vh" }}>
-			<section style={{ width: "50%", textAlign: "center" }}>
-				<h2 style={{ marginLeft: "70px" }}>Login</h2>
+		<div className="login-page">
+			<section className="login-section custom-login-section">
+				<h2>Login</h2>
 				<form onSubmit={handleLogin}>
 					<label>
 						Username:
@@ -67,10 +67,10 @@ function Login() {
 							value={username}
 							onChange={handleInputChange}
 							required
-							style={{ width: "20%", padding: "5px", marginBottom: "10px", marginLeft: "10px" }}
+							className="login-input"
 						/>
 					</label>
-					<br />
+					<br/>
 					<label>
 						Password:
 						<input
@@ -81,15 +81,21 @@ function Login() {
 							required
 							pattern=".{1,}"
 							title="Password cannot be empty"
-							style={{ width: "20%", padding: "5px", marginBottom: "10px", marginLeft: "13px" }}
+							className="login-input"
 						/>
 					</label>
-					<br />
-					<button type="submit" style={{ backgroundColor: "#007BFF", color: "white", padding: "10px", borderRadius: "30px", marginLeft: "70px" }}>
+					<br/>
+					<button
+						type="submit"
+						className="login-button"
+					>
 						Login
 					</button>
 				</form>
+
+
 			</section>
+
 		</div>
 	);
 }

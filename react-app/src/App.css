@@ -4,12 +4,17 @@ body {
 	font-family: 'Arial', sans-serif;
 	background-color: #f5f5f5;
 	color: #333;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow-x: hidden;
 }
 
 .app {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	flex: 1;
+	min-height: 100%;
 }
 
 .app-container {
@@ -47,9 +52,10 @@ body {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 .app-sidebar ul li a {
 	text-decoration: none;
-	color: #ecf0f1; /* Set the desired text color */
+	color: #ecf0f1;
 	display: block;
 	padding: 15px;
 	text-align: center;
@@ -64,8 +70,9 @@ body {
 .app-sidebar ul li:hover {
 	background-color: #34495e;
 }
+
 .app-sidebar ul li:hover a {
-	color: #ecf0f1; /* Change text color on hover */
+	color: #ecf0f1;
 }
 
 .app-main {
@@ -138,4 +145,15 @@ h2 {
 	padding: 10px;
 	background-color: #34495e;
 	color: #ecf0f1;
+	width: 100%;
+	margin-top: auto;
 }
+
+.login-section {
+	width: 80%;
+	max-width: 400px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+
