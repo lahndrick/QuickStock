@@ -6,12 +6,6 @@ body {
 	color: #333;
 }
 
-.app {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-}
-
 .app-container {
 	display: flex;
 	flex: 1;
@@ -49,7 +43,7 @@ body {
 }
 .app-sidebar ul li a {
 	text-decoration: none;
-	color: #ecf0f1; /* Set the desired text color */
+	color: #ecf0f1;
 	display: block;
 	padding: 15px;
 	text-align: center;
@@ -65,7 +59,7 @@ body {
 	background-color: #34495e;
 }
 .app-sidebar ul li:hover a {
-	color: #ecf0f1; /* Change text color on hover */
+	color: #ecf0f1;
 }
 
 .app-main {
@@ -88,13 +82,6 @@ body {
 
 h2 {
 	color: #2c3e50;
-}
-
-.widgets-container,
-.charts-container,
-.search-container,
-.table-container {
-	/* Add more styling based on your needs */
 }
 
 .widget {
@@ -128,14 +115,7 @@ h2 {
 	border-bottom: 1px solid #ddd;
 }
 
-.table-container th {
-	background-color: #3498db;
-	color: #fff;
-}
-
-.app-footer {
-	text-align: center;
-	padding: 10px;
-	background-color: #34495e;
-	color: #ecf0f1;
-}
+.active {
+	border-left: 2px solid #f5f5f5;
+	border-right: 2px solid #f5f5f5; 
+  }

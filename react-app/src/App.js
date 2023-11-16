@@ -1,6 +1,6 @@
 // Import necessary components
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
@@ -35,34 +35,34 @@ const Login = () => (
 
 function App() {
 	return (
-		<div className="app">
+		<div className="app flex flex-col h-screen">
 			<Router>
 				<div className="app-container">
 					<nav className="app-sidebar">
 						<div className="sidebar-header">
-							<h1>QuickStock</h1>
+							<h1 class="font-bold text-xl">QuickStock</h1>
 						</div>
 						<ul>
 							{/* Wrap the entire li with Link */}
-							<li>
-								<Link to="/dashboard">
+							<li id="dashboard-nav">
+								<NavLink to="/dashboard">
 									Dashboard
-								</Link>
+								</NavLink>
 							</li>
-							<li>
-								<Link to="/inventory">
+							<li id="inventory-nav">
+								<NavLink to="/inventory">
 									Inventory
-								</Link>
+								</NavLink>
 							</li>
-							<li>
-								<Link to="/accounts">
+							<li id="accounts-nav">
+								<NavLink to="/accounts">
 									Accounts
-								</Link>
+								</NavLink>
 							</li>
-							<li>
-								<Link to="/login">
+							<li id="login-nav">
+								<NavLink to="/login">
 									Login
-								</Link>
+								</NavLink>
 							</li>
 						</ul>
 					</nav>
@@ -78,7 +78,7 @@ function App() {
 				</div>
 			</Router>
 
-			<footer className="app-footer">
+			<footer className="app-footer text-center p-[10px] bg-primary text-off-white">
 				<p>&copy; 2023 QuickStock</p>
 			</footer>
 		</div>
