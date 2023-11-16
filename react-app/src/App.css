@@ -80,6 +80,7 @@ body {
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
 }
 
 .dashboard-section,
@@ -146,7 +147,8 @@ h2 {
 	background-color: #34495e;
 	color: #ecf0f1;
 	width: 100%;
-	margin-top: auto;
+	position: fixed;
+	bottom: 0;
 }
 
 .login-section {
