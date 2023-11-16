@@ -22,4 +22,15 @@ class Library_security
 			return false;
 		}
 	}
+
+	public function checkToken($token){
+		return $this->CI->auth_model->getToken($token); // Corrected line
+
+
+		/*if (!empty($token) ) {
+			return true;
+		} else {
+			return false;
+		}*/
+	}
 }
