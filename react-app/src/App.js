@@ -102,8 +102,24 @@ function App() {
 									<li>
 										<Link to="/accounts">Accounts</Link>
 									</li>
-									<li>
-										<button onClick={handleLogout}>Logout</button>
+									<li style={{ marginBottom: "5px" }}>
+										<button
+											onClick={handleLogout}
+											style={{
+												backgroundColor: "#2c3e50",
+												fontSize: "16px",
+												color: "#ecf0f1",
+												padding: "15px",
+												width: "100%",
+												border: "none",
+												borderRadius: "5px", // Ensure border radius is set
+												cursor: "pointer",
+												transition: "background-color 0.3s",
+												outline: "none", // Remove default outline
+											}}
+										>
+											Logout
+										</button>
 									</li>
 								</ul>
 							</nav>
