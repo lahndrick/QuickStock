@@ -1,5 +1,5 @@
 <?php
-class AddRemove_items extends CI_model
+class AddRemove_model extends CI_model
 {
     public function __construct()
     {
