@@ -14,6 +14,7 @@ function Inventory() {
 					},
 				});
 				console.log('Response Data:', response.data);
+				setInvData(response.data);
 			} catch (error) {
 				console.error('Error fetching data:', error.message);
 			}
