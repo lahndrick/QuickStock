@@ -11,7 +11,7 @@ class AddRemove_model extends CI_model
     {
         $this->db->insert("dashboard", $data);
 
-        return $this->db->affected_rows() != 0;
+        return $this->db->affected_rows() > 0;
     }
 
     public function removeItem($item_name)

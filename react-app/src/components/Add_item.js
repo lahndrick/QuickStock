@@ -11,29 +11,28 @@ function Add_Item() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        if (name === "time") {
-            setTime(new Date().toLocaleTimeString());
-        } else {
-            switch (name) {
-                case "id":
-                    setId(value);
-                    break;
-                case "name":
-                    setName(value);
-                    break;
-                case "description":
-                    setDesc(value);
-                    break;
-                case "value":
-                    setValue(value);
-                    break;
-                case "status":
-                    setStatus(value);
-                    break;
-                default:
-                    console.log("something is wrong with Add_Item mate");
-            }
+        setTime(new Date().toLocaleTimeString());
+        
+        switch (name) {
+            case "id":
+                setId(value);
+                break;
+            case "name":
+                setName(value);
+                break;
+            case "description":
+                setDesc(value);
+                break;
+            case "value":
+                setValue(value);
+                break;
+            case "status":
+                setStatus(value);
+                break;
+            default:
+                console.log("something is wrong with Add_Item mate");
         }
+
     };
 
     const handleAddItem = async (e) => {
@@ -48,16 +47,33 @@ function Add_Item() {
             time,
         };
 
-        try {
-            const response = axios.post("http://3.26.71.160/index.php/aadremove/additem", newItem);
+        const params = new URLSearchParams();
+        params.append('id', id);
+        params.append('name', name);
+        params.append('description', description);
+        params.append('value', value);
+        params.append('status', status);
+        params.append('time', time);
 
-            console.log("Item added successfully", response.data);
-        } catch (error) {
-            console.error("Error adding item", error);
-        }
+        //TODO: this is possibly why 
+        axios.post("http://3.26.71.160/index.php/AddRemove/addItem", params, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        })
+            .then(res => {
+                const { status } = res.data;
+
+                if (status === 'success') {
+                    console.log("item added");
+                } else {
+                    console.error("Error adding item", res);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
     };
-
-
 
     return (
         <div className="add-item-page">
@@ -132,11 +148,6 @@ function Add_Item() {
                             title="The item needs a status"
                             className="login-input w-50 p-[10px] mb-[10px] box-border"
                         />
-                    </label>
-                    <br />
-                    <label>
-                        Time:
-                        <input type="text" name="time" value={time} onChange={handleInputChange} />
                     </label>
                     <br />
                     <button
