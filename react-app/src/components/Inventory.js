@@ -29,7 +29,7 @@ function Inventory() {
 	}, []);
 
 	return (
-		<section className="inventory-section">
+		<section className="inventory-section bg-white p-[20px] mb-[20px] rounded-[8px] shadow-md flex flex-col">
 			{/* ... */}
 			<h2>Inventory</h2>
 			<ul>

@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
+    fontFamily: {
+      'arial': ['Arial', 'sans-serif'],
+    },
     colors: {
       'primary': '#34495e',
       'secondary': '#2c3e50',

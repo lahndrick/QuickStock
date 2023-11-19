@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import '../Login.css';
 function setCookie(name, value, days) {
 	const expires = new Date();
 	expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
@@ -57,7 +56,7 @@ function Login() {
 
 	return (
 		<div className="login-page">
-			<section className="login-section custom-login-section">
+			<section className="login-section custom-login-section w-4/5 max-w-[400px] mx-auto my-[15%] mb-[20px] p-[20px] box-border">
 				<h2>Login</h2>
 				<form onSubmit={handleLogin}>
 					<label>
@@ -68,7 +67,7 @@ function Login() {
 							value={username}
 							onChange={handleInputChange}
 							required
-							className="login-input"
+							className="login-input w-full p-[10px] mb-[10px] box-border"
 						/>
 					</label>
 					<br />
@@ -82,13 +81,13 @@ function Login() {
 							required
 							pattern=".{1,}"
 							title="Password cannot be empty"
-							className="login-input"
+							className="login-input w-full p-[10px] mb-[10px] box-border"
 						/>
 					</label>
 					<br />
 					<button
 						type="submit"
-						className="login-button"
+						className="login-button w-full bg-[#34495e] text-[#fff] p-[15px] cursor-pointer rounded-[5px] border-none outline-none transition-colors"
 					>
 						Login
 					</button>

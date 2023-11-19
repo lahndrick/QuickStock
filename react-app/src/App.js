@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, NavLink, Navigate} from 'react-router-dom';
 import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
@@ -100,40 +100,25 @@ function App() {
 
 	return (
 		<Router>
-			<div className="app">
-				<div className="app-container">
+			<div className="app flex flex-col flex-1 min-h-full m-0 p-0 font-arial text-[#333]">
+				<div className="app-container flex flex-1">
 					{!userToken ? null : (
-						<nav className="app-sidebar">
-							<div className="sidebar-header">
+						<nav className="app-sidebar w-[250px] bg-secondary text-off-white p-[20px] shadow-md flex flex-col items-center">
+							<div className="sidebar-header text-center mb-[20px]">
 								<h1>QuickStock</h1>
 							</div>
-							<ul>
-								<li>
-									<Link to="/dashboard">Dashboard</Link>
+							<ul className="list-none p-0 w-full">
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/dashboard" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Dashboard</NavLink>
 								</li>
-								<li>
-									<Link to="/inventory">Inventory</Link>
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/inventory" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Inventory</NavLink>
 								</li>
-								<li>
-									<Link to="/accounts">Accounts</Link>
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/accounts" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Accounts</NavLink>
 								</li>
-								<li style={{marginBottom: "5px"}}>
-									<button
-										onClick={handleLogout}
-										style={{
-											backgroundColor: "#2c3e50",
-											fontSize: "16px",
-											color: "#ecf0f1",
-											padding: "15px",
-											paddingTop: "0px",
-											width: "100%",
-											border: "none",
-											borderRadius: "5px",
-											cursor: "pointer",
-											transition: "background-color 0.3s",
-											outline: "none",
-										}}
-									>
+								<li  className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<button onClick={handleLogout}>
 										Logout
 									</button>
 								</li>
@@ -141,7 +126,7 @@ function App() {
 						</nav>
 					)}
 
-					<main className="app-main">
+					<main className="app-main flex flex-col flex-1 p-[20px] min-h-screen bg-off-white">
 						<Routes>
 							{!isAuthenticated ? (
 								<Route path="/login" element={<LoginComponent/>}/>
@@ -156,7 +141,7 @@ function App() {
 					</main>
 				</div>
 
-				<footer className="app-footer">
+				<footer className="app-footer text-center p-[10px] bg-[#34495e] text-off-white w-full fixed bottom-0">
 					<p>&copy; 2023 QuickStock</p>
 				</footer>
 			</div>

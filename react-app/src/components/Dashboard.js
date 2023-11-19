@@ -22,7 +22,7 @@ function Dashboard() {
 
 	return (
 		<div>
-			<section className="dashboard-section">
+			<section className="dashboard-section bg-white p-[20px] mb-[20px] rounded-[8px] shadow-md flex flex-col">
 				<h2>Dashboard</h2>
 				{/* Display your fetched data here */}
 				<ul>
