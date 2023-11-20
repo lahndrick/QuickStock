@@ -7,7 +7,7 @@ class AddRemove extends CI_Controller
         parent::__construct();
         $this->load->model('AddRemove_model');
         $this->output->set_header("Access-Control-Allow-Origin: *");
-		$this->output->set_header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+		$this->output->set_header("Access-Control-Allow-Methods: POST");
 		$this->output->set_header("Access-Control-Allow-Headers: Content-Type, Authorization");
     }
 
@@ -18,21 +18,14 @@ class AddRemove extends CI_Controller
     }
 
     public function addItem()
-    {
-        $id = $this->input->post('id');
-        $name = $this->input->post('name');
-        $description = $this->input->post('description');
-        $value = $this->input->post('value');
-        $status = $this->input->post('status');
-        $time = $this->input->post('time');
-            
+    {            
         $data = array(
-            'id' => $id,
-            'name' => $name,
-            'description' => $description,
-            'value' => $value,
-            'status' => $status,
-            'time' => $time,
+            'id' => $this->input->post('id'),
+            'name' => $this->input->post('name'),
+            'description' => $this->input->post('description'),
+            'value' => $this->input->post('value'),
+            'status' => $this->input->post('status'),
+            'time' => $this->input->post('time'),
         );
     
         $result_add = $this->AddRemove_model->addItem($data);
