@@ -6,6 +6,7 @@ class AddRemove extends CI_Controller
     {
         parent::__construct();
         $this->load->model('AddRemove_model');
+        $this->load->model('Main_model');
         $this->output->set_header("Access-Control-Allow-Origin: *");
 		$this->output->set_header("Access-Control-Allow-Methods: POST");
 		$this->output->set_header("Access-Control-Allow-Headers: Content-Type, Authorization");
@@ -27,10 +28,10 @@ class AddRemove extends CI_Controller
             'status' => $this->input->post('status'),
             'time' => $this->input->post('time'),
         );
-    
+        
+        //return true/false
         $result_add = $this->AddRemove_model->addItem($data);
     
-        // Check if the item was added successfully
         if ($result_add) {
             echo "Item added successfully";
         } else {
