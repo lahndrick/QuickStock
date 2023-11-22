@@ -66,7 +66,9 @@ function Add_Item() {
 
                 if (status === 'success') {
                     console.log("item added");
+                    window.location.reload();
                 } else {
+                    alert("Error: " + res.data);
                     console.error("Error adding item", res);
                 }
             })
