@@ -6,6 +6,7 @@ import AccountsComponent from './components/Accounts';
 import DashboardComponent from './components/Dashboard';
 import LoginComponent from './components/Login';
 import AddItemComponent from './components/Add_item';
+import RemoveItemComponent from './components/Remove_item';
 
 function setCookie(name, value, days) {
 	const expires = new Date();
@@ -113,6 +114,9 @@ function App() {
 									<NavLink to="/add_item" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Add item</NavLink>
 								</li>
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/remove_item" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">remove item</NavLink>
+								</li>
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/dashboard" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Dashboard</NavLink>
 								</li>
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
@@ -140,6 +144,7 @@ function App() {
 									<Route path="/inventory" element={<InventoryComponent />} />
 									<Route path="/accounts" element={<AccountsComponent />} />
 									<Route path="/Add_item" element={<AddItemComponent />} />
+									<Route path="/Remove_item" element={<RemoveItemComponent />} />
 								</>
 							)}
 						</Routes>
