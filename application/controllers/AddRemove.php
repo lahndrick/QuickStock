@@ -42,10 +42,9 @@ class AddRemove extends CI_Controller
 
     public function removeItem()
     {
-        //TODO: this shit is not even started
-        $item_name_to_remove = 'Item Name';
+        $removeId = 'Item Name';
 
-        $result_remove = $this->AddRemove_model->removeItem($item_name_to_remove); // Adjust the model name
+        $result_remove = $this->AddRemove_model->removeItem($removeId);
 
         if ($result_remove) {
             echo "Item removed successfully";

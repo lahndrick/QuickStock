@@ -23,9 +23,9 @@ class AddRemove_model extends CI_model
     }
 
 
-    public function removeItem($item_name)
+    public function removeItem($itemId)
     {
-        $this->db->where('name', $item_name);
+        $this->db->where('id', $itemId);
         $this->db->delete('dashboard');
 
         return $this->db->affected_rows() != 0;
