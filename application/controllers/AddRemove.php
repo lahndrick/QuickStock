@@ -42,7 +42,7 @@ class AddRemove extends CI_Controller
 
     public function removeItem()
     {
-        $removeId = 'Item Name';
+        $removeId = $this->input->post("id");
 
         $result_remove = $this->AddRemove_model->removeItem($removeId);
 
