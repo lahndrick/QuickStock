@@ -7,6 +7,7 @@ import DashboardComponent from './components/Dashboard';
 import LoginComponent from './components/Login';
 import AddItemComponent from './components/Add_item';
 import RemoveItemComponent from './components/Remove_item';
+import ManageItemsComponent from './components/Manage_items';
 
 function setCookie(name, value, days) {
 	const expires = new Date();
@@ -111,13 +112,10 @@ function App() {
 							</div>
 							<ul className="list-none p-0 w-full">
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
-									<NavLink to="/add_item" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Add item</NavLink>
-								</li>
-								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
-									<NavLink to="/remove_item" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">remove item</NavLink>
-								</li>
-								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/dashboard" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Dashboard</NavLink>
+								</li>
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/Manage_items" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Manage Items</NavLink>
 								</li>
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/inventory" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Inventory</NavLink>
@@ -145,6 +143,7 @@ function App() {
 									<Route path="/accounts" element={<AccountsComponent />} />
 									<Route path="/Add_item" element={<AddItemComponent />} />
 									<Route path="/Remove_item" element={<RemoveItemComponent />} />
+									<Route path="/Manage_items" element={<ManageItemsComponent />} />
 								</>
 							)}
 						</Routes>
