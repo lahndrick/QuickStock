@@ -14,11 +14,18 @@ class AddRemove_model extends CI_model
             $quantity = $data['quantity'];
             $description = $data['description'];
             $location = $data['location'];
-            
-            $sql = "INSERT INTO items (name, quantity, description, location) VALUES (?, ?, ?, ?)";
-            $this->db->update()($sql, array($name, $quantity, $description, $location));
-            
-            if ($this->db->affected_rows() == 1) {
+
+            $this->db->insert(
+                'Items',
+                array(
+                    'name' => $name,
+                    'quantity' => $quantity,
+                    'description' => $description,
+                    'location' => $location
+                )
+            );
+
+            if ($this->db->affected_rows() != 0) {
                 return true;
             } else {
                 return false;
@@ -27,7 +34,7 @@ class AddRemove_model extends CI_model
             // Log the database error
             $error_message = 'Database error: ' . $e->getMessage();
             log_message('error', $error_message);
-    
+
             // Return false to indicate failure
             return false;
         }
@@ -37,7 +44,7 @@ class AddRemove_model extends CI_model
     public function removeItem($barcode)
     {
         $this->db->where('barcode', $barcode);
-        $this->db->delete('items');
+        $this->db->delete('Items');
 
         return $this->db->affected_rows() != 0;
     }
