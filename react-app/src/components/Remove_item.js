@@ -36,8 +36,7 @@ class Remove_Item extends Component {
                     console.log("item removed");
                     window.location.reload();
                 } else {
-                    alert("Error: " + res.data);
-                    console.error("Error removing item", res);
+                    alert(res.data);
                 }
             })
             .catch(error => {

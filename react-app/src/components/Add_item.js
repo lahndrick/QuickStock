@@ -58,8 +58,7 @@ function Add_Item() {
                     console.log("item added");
                     window.location.reload();
                 } else {
-                    alert("Error: " + res.data);
-                    console.error("Error adding item", res);
+                    alert(res.data);
                 }
             })
             .catch(error => {
