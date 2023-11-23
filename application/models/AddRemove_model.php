@@ -18,7 +18,7 @@ class AddRemove_model extends CI_model
             $sql = "INSERT INTO items (name, quantity, description, location) VALUES (?, ?, ?, ?)";
             $this->db->update()($sql, array($name, $quantity, $description, $location));
             
-            if ($this->db->affected_rows() == 0) {
+            if ($this->db->affected_rows() == 1) {
                 return true;
             } else {
                 return false;
