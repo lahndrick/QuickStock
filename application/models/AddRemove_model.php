@@ -10,23 +10,34 @@ class AddRemove_model extends CI_model
     public function addItem($data)
     {
         try {
-            $this->db->insert("dashboard", $data);
-
-            if ($this->db->affected_rows() > 0) {
+            $name = $data['name'];
+            $quantity = $data['quantity'];
+            $description = $data['description'];
+            $location = $data['location'];
+            
+            $sql = "INSERT INTO items (name, quantity, description, location) VALUES (?, ?, ?, ?)";
+            $this->db->update()($sql, array($name, $quantity, $description, $location));
+            
+            if ($this->db->affected_rows() == 0) {
                 return true;
             } else {
                 return false;
             }
         } catch (Exception $e) {
+            // Log the database error
+            $error_message = 'Database error: ' . $e->getMessage();
+            log_message('error', $error_message);
+    
+            // Return false to indicate failure
             return false;
         }
     }
 
 
-    public function removeItem($itemId)
+    public function removeItem($barcode)
     {
-        $this->db->where('id', $itemId);
-        $this->db->delete('dashboard');
+        $this->db->where('barcode', $barcode);
+        $this->db->delete('items');
 
         return $this->db->affected_rows() != 0;
     }

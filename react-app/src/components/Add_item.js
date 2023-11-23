@@ -2,35 +2,29 @@ import react, { useState } from "react";
 import axios from 'axios';
 
 function Add_Item() {
-    const [id, setId] = useState("");
     const [name, setName] = useState("");
+    const [quantity, setQuantity] = useState("");
     const [description, setDesc] = useState("");
-    const [value, setValue] = useState("");
-    const [status, setStatus] = useState("");
-    const [time, setTime] = useState("");
+    const [location, setLocation] = useState("");
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setTime(new Date().toLocaleTimeString());
-        
+        const { name, value } = e.target;        
+
         switch (name) {
-            case "id":
-                setId(value);
-                break;
             case "name":
                 setName(value);
+                break;
+            case "quantity":
+                setQuantity(value);
                 break;
             case "description":
                 setDesc(value);
                 break;
-            case "value":
-                setValue(value);
-                break;
-            case "status":
-                setStatus(value);
+            case "location":
+                setLocation(value);
                 break;
             default:
-                console.log("something is wrong with Add_Item mate");
+                console.log("Error with Add item: handleInputChange.");
         }
 
     };
@@ -39,21 +33,17 @@ function Add_Item() {
         e.preventDefault();
 
         const newItem = {
-            id,
             name,
+            quantity,
             description,
-            value,
-            status,
-            time,
+            location,
         };
 
         const params = new URLSearchParams();
-        params.append('id', id);
         params.append('name', name);
+        params.append('quantity', quantity);
         params.append('description', description);
-        params.append('value', value);
-        params.append('status', status);
-        params.append('time', time);
+        params.append('location', location);
 
         //TODO: this is possibly why 
         axios.post("http://3.26.71.160/index.php/AddRemove/addItem", params, {
@@ -83,21 +73,7 @@ function Add_Item() {
                 <h2 className="col-span-2 mb-4">Add item</h2>
                 <form onSubmit={handleAddItem}>
                     <label>
-                        ID:
-                        <input
-                            type="text"
-                            name="id"
-                            value={id}
-                            onChange={handleInputChange}
-                            required
-                            pattern=".{1,}"
-                            title="The item needs a description"
-                            className="login-input w-50 p-[10px] mb-[10px] box-border"
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Name:
+                        name:
                         <input
                             type="text"
                             name="name"
@@ -105,13 +81,13 @@ function Add_Item() {
                             onChange={handleInputChange}
                             required
                             pattern=".{1,}"
-                            title="The item needs a description"
+                            title="The item needs a name"
                             className="login-input w-50 p-[10px] mb-[10px] box-border"
                         />
                     </label>
                     <br />
                     <label>
-                        Description:
+                        description:
                         <input
                             type="text"
                             name="description"
@@ -125,29 +101,29 @@ function Add_Item() {
                     </label>
                     <br />
                     <label>
-                        Value:
+                        quantity:
                         <input
-                            type="text"
-                            name="value"
-                            value={value}
+                            type="number"
+                            name="quantity"
+                            value={quantity}
                             onChange={handleInputChange}
                             required
                             pattern=".{1,}"
-                            title="The item needs a value"
+                            title="The item needs a quantity"
                             className="login-input w-50 p-[10px] mb-[10px] box-border"
                         />
                     </label>
                     <br />
                     <label>
-                        Status:
+                        location:
                         <input
                             type="text"
-                            name="status"
-                            value={status}
+                            name="location"
+                            value={location}
                             onChange={handleInputChange}
                             required
                             pattern=".{1,}"
-                            title="The item needs a status"
+                            title="The item needs a location"
                             className="login-input w-50 p-[10px] mb-[10px] box-border"
                         />
                     </label>

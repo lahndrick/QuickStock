@@ -5,11 +5,12 @@ class AddRemove extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('AddRemove_model');
+		$this->load->helper('url');
         $this->load->model('Main_model');
+        $this->load->model('AddRemove_model');
         $this->output->set_header("Access-Control-Allow-Origin: *");
-		$this->output->set_header("Access-Control-Allow-Methods: POST");
-		$this->output->set_header("Access-Control-Allow-Headers: Content-Type, Authorization");
+		$this->output->set_header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+		$this->output->set_header("Access-Control-Allow-Headers: Content-Type");
     }
 
     public function index()
@@ -21,12 +22,10 @@ class AddRemove extends CI_Controller
     public function addItem()
     {            
         $data = array(
-            'id' => $this->input->post('id'),
             'name' => $this->input->post('name'),
+            'quantity' => $this->input->post('quantity'),
             'description' => $this->input->post('description'),
-            'value' => $this->input->post('value'),
-            'status' => $this->input->post('status'),
-            'time' => $this->input->post('time'),
+            'location' => $this->input->post('location'),
         );
         
         //return true/false
