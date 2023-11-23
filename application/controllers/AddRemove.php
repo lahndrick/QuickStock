@@ -41,9 +41,9 @@ class AddRemove extends CI_Controller
 
     public function removeItem()
     {
-        $removeId = $this->input->post("id");
+        $removeBarcode = $this->input->post("barcode");
 
-        $result_remove = $this->AddRemove_model->removeItem($removeId);
+        $result_remove = $this->AddRemove_model->removeItem($removeBarcode);
 
         if ($result_remove) {
             echo "Item removed successfully";

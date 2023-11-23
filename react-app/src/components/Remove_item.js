@@ -6,23 +6,23 @@ class Remove_Item extends Component {
         super(props);
 
         this.state = {
-            id: "",
+            barcode: "",
         };
     }
 
     handleInputChange = (e) => {
         this.setState({
-            id: e.target.value,
+            barcode: e.target.value,
         });
     };
 
     handleRemoveItem = async (e) => {
         e.preventDefault();
 
-        const { id } = this.state;
+        const { barcode } = this.state;
 
         const params = new URLSearchParams();
-        params.append('id', id);
+        params.append('barcode', barcode);
 
         axios.post("http://3.26.71.160/index.php/AddRemove/removeItem", params, {
             headers: {
@@ -52,15 +52,15 @@ class Remove_Item extends Component {
                     <h2 className="col-span-2 mb-4">Remove item</h2>
                     <form onSubmit={this.handleRemoveItem}>
                         <label>
-                            ID:
+                            barcode:
                             <input
-                                type="text"
-                                name="id"
-                                value={this.state.id}
+                                type="number"
+                                name="barcode"
+                                value={this.state.barcode}
                                 onChange={this.handleInputChange}
                                 required
                                 pattern=".{1,}"
-                                title="Please enter the item ID"
+                                title="Please enter the item barcode"
                                 className="login-input w-50 p-[10px] mb-[10px] box-border"
                             />
                         </label>

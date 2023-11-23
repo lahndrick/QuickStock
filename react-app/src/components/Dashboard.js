@@ -28,7 +28,7 @@ function Dashboard() {
 				<ul>
 					{dashboardData.map(item => (
 						<li key={item.id}>
-							ID: {item.id}, name: {item.name}, Value: {item.value}
+							ID: {item.barcode}, name: {item.name}, quantity: {item.quantity}
 						</li>
 					))}
 				</ul>
