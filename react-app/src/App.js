@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route, NavLink, Navigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import './App.css';
 import InventoryComponent from './components/Inventory';
 import AccountsComponent from './components/Accounts';
 import DashboardComponent from './components/Dashboard';
 import LoginComponent from './components/Login';
+import AddItemComponent from './components/Add_item';
+import RemoveItemComponent from './components/Remove_item';
+import ManageItemsComponent from './components/Manage_items';
 
 function setCookie(name, value, days) {
 	const expires = new Date();
@@ -91,7 +94,7 @@ function App() {
 		return (
 			<div className="login-page">
 
-				<LoginComponent/>
+				<LoginComponent />
 
 
 			</div>
@@ -112,12 +115,15 @@ function App() {
 									<NavLink to="/dashboard" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Dashboard</NavLink>
 								</li>
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/Manage_items" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Manage Items</NavLink>
+								</li>
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/inventory" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Inventory</NavLink>
 								</li>
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/accounts" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Accounts</NavLink>
 								</li>
-								<li  className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<button onClick={handleLogout}>
 										Logout
 									</button>
@@ -129,12 +135,15 @@ function App() {
 					<main className="app-main flex flex-col flex-1 p-[20px] min-h-screen bg-off-white">
 						<Routes>
 							{!isAuthenticated ? (
-								<Route path="/login" element={<LoginComponent/>}/>
+								<Route path="/login" element={<LoginComponent />} />
 							) : (
 								<>
-									<Route path="/dashboard" element={<DashboardComponent/>}/>
-									<Route path="/inventory" element={<InventoryComponent/>}/>
-									<Route path="/accounts" element={<AccountsComponent/>}/>
+									<Route path="/dashboard" element={<DashboardComponent />} />
+									<Route path="/inventory" element={<InventoryComponent />} />
+									<Route path="/accounts" element={<AccountsComponent />} />
+									<Route path="/Add_item" element={<AddItemComponent />} />
+									<Route path="/Remove_item" element={<RemoveItemComponent />} />
+									<Route path="/Manage_items" element={<ManageItemsComponent />} />
 								</>
 							)}
 						</Routes>

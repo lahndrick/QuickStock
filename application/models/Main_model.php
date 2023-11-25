@@ -9,7 +9,7 @@ class Main_model extends CI_Model
 
 	public function getDashboard()
 	{
-		$query = $this->db->query("SELECT * FROM dashboard");
+		$query = $this->db->query("SELECT * FROM Items");
 		return $query->result();
 	}
 }

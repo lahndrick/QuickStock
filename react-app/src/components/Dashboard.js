@@ -23,13 +23,16 @@ function Dashboard() {
 	return (
 		<div>
 			<section className="dashboard-section bg-white p-[20px] mb-[20px] rounded-[8px] shadow-md flex flex-col">
-				<h2>Dashboard</h2>
+				<h2>Welcome to QuickStock!</h2>
 				{/* Display your fetched data here */}
 				<ul>
 					{dashboardData.map(item => (
-						<li key={item.id}>{item.name}</li>
+						<li key={item.id}>
+							ID: {item.barcode}, name: {item.name}, quantity: {item.quantity}
+						</li>
 					))}
 				</ul>
+
 			</section>
 		</div>
 	);
