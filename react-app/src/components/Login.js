@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import quickstockLogo from "../icon.png";
+
 function setCookie(name, value, days) {
 	const expires = new Date();
 	expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
@@ -9,6 +11,7 @@ function setCookie(name, value, days) {
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	document.title = "QuickStock - Login";
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -57,7 +60,10 @@ function Login() {
 	return (
 		<div className="login-page">
 			<section className="login-section custom-login-section w-4/5 max-w-[400px] mx-auto my-[15%] mb-[20px] p-[20px] box-border">
-				<h2>Login</h2>
+				<div className="flex h-[80px]">
+					<img src={quickstockLogo} alt="QuickStock Logo" className="w-16 h-fit brightness-[0%] self-center"/>
+					<h2 className="text-3xl font-medium pl-2 h-fit self-center">QuickStock Login</h2>
+				</div>
 				<form onSubmit={handleLogin}>
 					<label>
 						Username:

@@ -8,6 +8,7 @@ import LoginComponent from './components/Login';
 import AddItemComponent from './components/Add_item';
 import RemoveItemComponent from './components/Remove_item';
 import ManageItemsComponent from './components/Manage_items';
+import quickstockLogo from "./icon.png";
 
 function setCookie(name, value, days) {
 	const expires = new Date();
@@ -107,12 +108,11 @@ function App() {
 				<div className="app-container flex flex-1">
 					{!userToken ? null : (
 						<nav className="app-sidebar w-[250px] bg-secondary text-off-white p-[20px] shadow-md flex flex-col items-center">
-							<div className="sidebar-header text-center mb-[20px]">
-								<h1>QuickStock</h1>
-							</div>
-							<ul className="list-none p-0 w-full">
-								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
-									<NavLink to="/dashboard" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Dashboard</NavLink>
+							<ul className="list-none p-0 w-full relative h-full">
+								<li className="quickstock-header hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+									<NavLink to="/dashboard" className="logo-text text-[22px] font-medium px-3 flex p-[15px] text-center cursor-pointer transition-colors text-off-white">
+									<img src={quickstockLogo} alt="QuickStock Logo" className="pr-2 w-10"/>
+										QuickStock</NavLink>
 								</li>
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/Manage_items" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Manage Items</NavLink>
@@ -123,7 +123,7 @@ function App() {
 								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
 									<NavLink to="/accounts" className="p-[15px] text-center cursor-pointer transition-colors block text-off-white">Accounts</NavLink>
 								</li>
-								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px]">
+								<li className="hover:bg-[#34495e] p-[15px] text-center cursor-pointer transition-colors radius-[5px] mb-[5px] opacity-80 block align-bottom absolute w-full bottom-10">
 									<button onClick={handleLogout}>
 										Logout
 									</button>
