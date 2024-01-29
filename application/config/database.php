@@ -73,12 +73,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+
+// database details changed as the database is no longer used
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '96.0.76.198',
-	'username' => 'betanetspace_qsnz',
-	'password' => 'QuickStock123',
-	'database' => 'betanetspace_qsnz',
+	'hostname' => 'changed',
+	'username' => 'changed',
+	'password' => 'changed',
+	'database' => 'changed',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
